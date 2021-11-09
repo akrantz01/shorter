@@ -1,7 +1,7 @@
 use crate::link::Link;
 use askama::Template;
 
-static VERSION: &'static str = env!("CARGO_PKG_VERSION");
+static VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[derive(Template)]
 #[template(path = "index.html")]
