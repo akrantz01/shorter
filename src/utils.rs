@@ -1,5 +1,8 @@
 use cfg_if::cfg_if;
 
+pub static KV_LINKS: &'static str = "LINKS";
+pub static KV_STATISTICS: &'static str = "STATISTICS";
+
 cfg_if! {
     // https://github.com/rustwasm/console_error_panic_hook#readme
     if #[cfg(feature = "console_error_panic_hook")] {
