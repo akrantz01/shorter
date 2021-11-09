@@ -1,5 +1,7 @@
 use cfg_if::cfg_if;
 
+pub static ENV_MANAGEMENT_DOMAIN: &'static str = "MANAGEMENT_DOMAIN";
+pub static ENV_SHORT_DOMAIN: &'static str = "SHORT_DOMAIN";
 pub static KV_LINKS: &'static str = "LINKS";
 
 cfg_if! {
