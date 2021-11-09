@@ -42,7 +42,7 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
         router
             .get_async("/", ui::index)
             .post_async("/api/modify", ui::api::modify)
-            .delete_async("/api/delete", ui::api::delete)
+            .post_async("/api/delete", ui::api::delete)
             .get_async("/:name", ui::details)
             .run(req, env)
             .await

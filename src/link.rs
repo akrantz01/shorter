@@ -11,6 +11,16 @@ pub struct Link {
     pub url: Url,
 }
 
+impl Link {
+    pub fn new(url: Url) -> Self {
+        Self {
+            enabled: true,
+            usages: 0,
+            url,
+        }
+    }
+}
+
 /// Handle routing to shortened links
 pub async fn route(_: Request, ctx: RouteContext<()>) -> Result<Response> {
     let links = ctx.kv(KV_LINKS)?;
