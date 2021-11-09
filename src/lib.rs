@@ -1,6 +1,7 @@
 use worker::*;
 
 mod link;
+mod ui;
 mod utils;
 
 fn log_request(req: &Request) {
@@ -29,8 +30,14 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
     // functionality and a `RouteContext` which you can use to  and get route parameters and
     // Environment bindings like KV Stores, Durable Objects, Secrets, and Variables.
     router
+        // Link-shortener routes
         .get_async("/", link::route)
         .get_async("/:name", link::route)
+        // Management UI/API routes
+        .get_async("/ui", ui::index)
+        .post_async("/ui/api/modify", ui::api::modify)
+        .delete_async("/ui/api/delete", ui::api::delete)
+        .get_async("/ui/:name", ui::details)
         .run(req, env)
         .await
 }

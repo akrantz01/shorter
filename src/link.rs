@@ -6,9 +6,9 @@ use worker::{Request, Response, Result, RouteContext};
 /// A link in the database
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Link {
-    enabled: bool,
-    usages: u64,
-    url: Url,
+    pub enabled: bool,
+    pub usages: u64,
+    pub url: Url,
 }
 
 /// Handle routing to shortened links
