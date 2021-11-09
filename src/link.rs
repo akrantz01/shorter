@@ -1,7 +1,12 @@
 use crate::utils::KV_LINKS;
+use askama::Template;
 use serde::{Deserialize, Serialize};
 use url::Url;
 use worker::{Request, Response, Result, RouteContext};
+
+#[derive(Template)]
+#[template(path = "404.html")]
+struct NotFoundTemplate;
 
 /// A link in the database
 #[derive(Debug, Deserialize, Serialize)]
@@ -45,5 +50,9 @@ pub async fn route(_: Request, ctx: RouteContext<()>) -> Result<Response> {
         }
     }
 
-    Response::error("Link not found", 404)
+    Response::from_html(
+        NotFoundTemplate
+            .render()
+            .expect("Template should always render"),
+    )
 }
