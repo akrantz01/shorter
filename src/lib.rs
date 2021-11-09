@@ -1,5 +1,6 @@
 use worker::*;
 
+mod link;
 mod utils;
 
 fn log_request(req: &Request) {
@@ -28,7 +29,8 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
     // functionality and a `RouteContext` which you can use to  and get route parameters and
     // Environment bindings like KV Stores, Durable Objects, Secrets, and Variables.
     router
-        .get("/", |_, _| Response::ok("Hello from Workers!"))
+        .get_async("/", link::route)
+        .get_async("/:name", link::route)
         .run(req, env)
         .await
 }
