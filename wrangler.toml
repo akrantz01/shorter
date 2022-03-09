@@ -21,7 +21,7 @@ binding = "LINKS"
 id = "2d62bc3067404ade9c9a71d9bc6d7c96"
 
 [build]
-command = "cargo install -q worker-build && worker-build --release" # required
+command = "worker-build --release" # required
 
 [build.upload]
 dir    = "build/worker"
