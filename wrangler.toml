@@ -14,7 +14,7 @@ compatibility_date = "2021-11-09"
 
 [vars]
 SHORT_DOMAIN = "wffl.link"
-MANAGEMENT_DOMAIN = "links.wafflehacks.tech"
+MANAGEMENT_DOMAIN = "links.wafflehacks.org"
 
 [[kv_namespaces]]
 binding = "LINKS"
