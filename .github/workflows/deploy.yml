@@ -13,7 +13,7 @@ jobs:
         with:
           node-version-file: director/.node-version
           cache: yarn
-          cache-dependency-file: yarn.lock
+          cache-dependency-path: yarn.lock
       - run: yarn install --frozen-lockfile --immutable
       - run: yarn workspace director deploy
         env:
