@@ -1,13 +1,4 @@
-import {
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Switch,
-} from '@chakra-ui/react';
+import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup, InputLeftAddon, Switch } from '@chakra-ui/react';
 import { json, redirect } from '@remix-run/cloudflare';
 import { useActionData, useLoaderData, useParams } from '@remix-run/react';
 
@@ -57,7 +48,6 @@ export default function Edit(): JSX.Element {
           <InputLeftAddon children="wffl.link/" />
           <Input id="slug" name="slug" value={slug} />
         </InputGroup>
-        <FormHelperText>To change the slug, you must re-create the short-link.</FormHelperText>
       </FormControl>
 
       <FormControl mt={{ base: 6, sm: 5 }} isRequired isInvalid={!!result?.errors?.url}>

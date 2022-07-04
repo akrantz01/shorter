@@ -1,4 +1,4 @@
-import { ArrowBackIcon, CheckIcon, CloseIcon, CopyIcon, EditIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowRightIcon, CheckIcon, CloseIcon, CopyIcon, EditIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -55,9 +55,12 @@ export const loader: LoaderFunction = async ({ params, context }) => {
 interface ItemProps {
   label: string;
   children: ReactNode;
+  rightElement?: ReactNode;
 }
 
-function Item({ label, children }: ItemProps): JSX.Element {
+function Item({ label, children, rightElement }: ItemProps): JSX.Element {
+  const colSpan = rightElement ? 1 : { base: 1, sm: 2 };
+
   return (
     <Grid
       py={{ base: 4, sm: 5 }}
@@ -70,11 +73,16 @@ function Item({ label, children }: ItemProps): JSX.Element {
           {label}
         </Text>
       </GridItem>
-      <GridItem colSpan={{ base: 1, sm: 2 }}>
+      <GridItem colSpan={colSpan}>
         <Text as="span" mt={{ base: 1, sm: 0 }} size="sm" color="gray.900">
           {children}
         </Text>
       </GridItem>
+      {rightElement && (
+        <GridItem display="flex" justifyContent="end">
+          {rightElement}
+        </GridItem>
+      )}
     </Grid>
   );
 }
@@ -121,7 +129,16 @@ export default function ViewLink() {
 
       <Divider mt={5} color="gray.200" />
 
-      <Item label="Slug">{slug}</Item>
+      <Item
+        label="Slug"
+        rightElement={
+          <Button as={Link} to="rename" variant="outline" size="xs" rightIcon={<ArrowRightIcon />}>
+            Rename
+          </Button>
+        }
+      >
+        {slug}
+      </Item>
 
       <Divider color="gray.200" />
 
