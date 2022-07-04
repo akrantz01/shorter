@@ -3,7 +3,7 @@ import { json, redirect } from '@remix-run/cloudflare';
 import { useActionData, useParams } from '@remix-run/react';
 
 import Form from '~/components/Form';
-import type { ActionFunction } from '~/lib/types';
+import type { ActionFunction, LoaderFunction } from '~/lib/types';
 
 interface Validated {
   error?: string;
@@ -15,11 +15,15 @@ export const action: ActionFunction = async ({ params: { slug }, context, reques
 
   // Get the new slug
   const newSlug = form.get('updated');
-  if (typeof newSlug !== 'string') return json({ error: 'This field is required' });
+  if (typeof newSlug !== 'string') return json({ error: 'This field is required' }, { status: 400 });
 
   // Check the slug is valid
   if (!/^[a-z0-9-]+$/.test(newSlug))
-    return json({ error: 'Can only contain lowercase alphanumeric characters and dashes' });
+    return json({ error: 'Can only contain lowercase alphanumeric characters and dashes' }, { status: 400 });
+
+  // Check a short-link doesn't already exist at the target name
+  const target = await context.links.get(newSlug);
+  if (target) return json({ error: 'A short-link already exists with this slug' }, { status: 400 });
 
   // Get the original
   const original = await context.links.get(slug as string);
@@ -30,6 +34,12 @@ export const action: ActionFunction = async ({ params: { slug }, context, reques
   await context.links.delete(slug as string);
 
   return redirect(`/links/${newSlug}`);
+};
+
+export const loader: LoaderFunction = async ({ params: { slug }, context }) => {
+  const link = await context.links.get(slug as string);
+  if (link) return null;
+  else throw new Response('not found', { status: 404 });
 };
 
 export default function Rename(): JSX.Element {

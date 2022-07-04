@@ -16,6 +16,10 @@ export const action: ActionFunction = async ({ request, context }) => {
 
   const { values } = result;
 
+  // Check something doesn't already exist there
+  const value = await context.links.get(values.slug);
+  if (value) return json({ values, errors: { slug: 'A short-link already exists with this name' } }, { status: 400 });
+
   // Insert into the database
   const link: ShortLink = { enabled: true, usages: 0, url: values.url };
   await context.links.put(values.slug, JSON.stringify(link));
