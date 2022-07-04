@@ -1,0 +1,20 @@
+{
+  "name": "director",
+  "version": "0.1.0",
+  "description": "The link re-directer for shorter",
+  "main": "dist/index.mjs",
+  "repository": "https://github.com/WaffleHacks/shorter",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "miniflare --live-reload --build-command \"yarn build\" --build-watch-path ./src --debug --modules dist/index.mjs --port 8778",
+    "deploy": "wrangler publish"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.14.0",
+    "esbuild": "^0.14.48",
+    "miniflare": "^2.5.1",
+    "typescript": "^4.7.4",
+    "wrangler": "^2.0.15"
+  }
+}

@@ -1,0 +1,23 @@
+name = "shorter-director"
+main = "dist/index.mjs"
+
+compatibility_date = "2022-07-01"
+compatibility_flags = []
+
+workers_dev = false
+route = "https://wffl.link/*"
+
+[vars]
+# The URL to redirect to when navigating to the base domain
+ROOT_REDIRECT = "https://wafflehacks.org"
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "2d62bc3067404ade9c9a71d9bc6d7c96"
+
+[build]
+command = "yarn build"
+
+[miniflare]
+kv_persist = true
+cache_persist = true

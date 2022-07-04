@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "name": "manage",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix build && run-p dev:*",
+    "dev:remix": "remix watch",
+    "dev:wrangler": "cross-env NODE_ENV=development wrangler pages dev ./public -k links",
+    "start": "cross-env NODE_ENV=production yarn dev:wrangler",
+    "lint": "eslint --fix .",
+    "postinstall": "remix-esbuild-override"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/cache": "^11.9.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
+    "@remix-run/cloudflare": "^1.6.3",
+    "@remix-run/cloudflare-pages": "^1.6.3",
+    "@remix-run/react": "^1.6.3",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^6.3.16",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.10.0",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@remix-run/dev": "^1.6.3",
+    "@remix-run/eslint-config": "^1.6.3",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "remix-esbuild-override": "^3.0.4",
+    "typescript": "^4.6.4",
+    "wrangler": "beta"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
