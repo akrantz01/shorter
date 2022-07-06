@@ -13,7 +13,7 @@ ROOT_REDIRECT = "https://wafflehacks.org"
 
 [[kv_namespaces]]
 binding = "LINKS"
-id = "2d62bc3067404ade9c9a71d9bc6d7c96"
+id = "4a66c395805c49748160b784ec6af7ee"
 
 [build]
 command = "yarn build"
