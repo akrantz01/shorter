@@ -96,7 +96,7 @@ export default function ViewLink() {
   const toast = useToast();
 
   const onCopy = async () => {
-    await navigator.clipboard.writeText(`https://wffl.link/${slug}`);
+    await navigator.clipboard.writeText(`https://krantz.to/${slug}`);
     toast({
       title: 'Link copied!',
       status: 'success',

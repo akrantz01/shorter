@@ -55,7 +55,7 @@ export default function Rename(): JSX.Element {
       <FormControl isReadOnly>
         <FormLabel htmlFor="original">Original Slug</FormLabel>
         <InputGroup>
-          <InputLeftAddon children="wffl.link/" />
+          <InputLeftAddon children="krantz.to/" />
           <Input id="original" name="original" value={slug} />
         </InputGroup>
       </FormControl>
@@ -63,7 +63,7 @@ export default function Rename(): JSX.Element {
       <FormControl mt={{ base: 6, sm: 5 }} isRequired isInvalid={!!result?.error}>
         <FormLabel htmlFor="updated">New Slug</FormLabel>
         <InputGroup>
-          <InputLeftAddon children="wffl.link/" />
+          <InputLeftAddon children="krantz.to/" />
           <Input id="updated" name="updated" />
         </InputGroup>
         {result?.error && <FormErrorMessage>{result?.error}</FormErrorMessage>}

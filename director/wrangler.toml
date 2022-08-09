@@ -5,15 +5,15 @@ compatibility_date = "2022-07-01"
 compatibility_flags = []
 
 workers_dev = false
-route = "https://wffl.link/*"
+route = "https://krantz.to/*"
 
 [vars]
 # The URL to redirect to when navigating to the base domain
-ROOT_REDIRECT = "https://wafflehacks.org"
+ROOT_REDIRECT = "https://krantz.dev"
 
 [[kv_namespaces]]
 binding = "LINKS"
-id = "4a66c395805c49748160b784ec6af7ee"
+id = "25f3a88378f94e21820d81305eaf6c0d"
 
 [build]
 command = "yarn build"

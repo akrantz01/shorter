@@ -35,7 +35,7 @@ export default function New(): JSX.Element {
       <FormControl isRequired isInvalid={!!data?.errors?.slug}>
         <FormLabel htmlFor="slug">Slug</FormLabel>
         <InputGroup>
-          <InputLeftAddon children="wffl.link/" />
+          <InputLeftAddon children="krantz.to/" />
           <Input id="slug" name="slug" defaultValue={data?.values.slug} />
         </InputGroup>
         {data?.errors?.slug && <FormErrorMessage>{data?.errors?.slug}</FormErrorMessage>}

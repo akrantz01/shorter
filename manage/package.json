@@ -7,10 +7,11 @@
     "build": "remix build",
     "dev": "remix build && run-p dev:*",
     "dev:remix": "remix watch",
-    "dev:wrangler": "cross-env NODE_ENV=development wrangler pages dev ./public -k links",
+    "dev:wrangler": "cross-env NODE_ENV=development miniflare ./build/index.js --watch -k LINKS",
     "start": "cross-env NODE_ENV=production yarn dev:wrangler",
     "lint": "eslint --fix .",
-    "postinstall": "remix-esbuild-override"
+    "postinstall": "remix-esbuild-override",
+    "deploy": "wrangler publish"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.2",
@@ -20,7 +21,7 @@
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.9.3",
     "@remix-run/cloudflare": "^1.6.3",
-    "@remix-run/cloudflare-pages": "^1.6.3",
+    "@remix-run/cloudflare-workers": "^1.6.3",
     "@remix-run/react": "^1.6.3",
     "cross-env": "^7.0.3",
     "framer-motion": "^6.3.16",
@@ -38,6 +39,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "miniflare": "^2.6.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "remix-esbuild-override": "^3.0.4",

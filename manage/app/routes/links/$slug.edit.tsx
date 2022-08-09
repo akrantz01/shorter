@@ -45,7 +45,7 @@ export default function Edit(): JSX.Element {
       <FormControl isReadOnly>
         <FormLabel htmlFor="slug">Slug</FormLabel>
         <InputGroup>
-          <InputLeftAddon children="wffl.link/" />
+          <InputLeftAddon children="krantz.to/" />
           <Input id="slug" name="slug" value={slug} />
         </InputGroup>
       </FormControl>

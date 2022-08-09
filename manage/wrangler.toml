@@ -1,0 +1,22 @@
+name = "shorter-manage"
+main = "./build/index.js"
+
+compatibility_date = "2022-07-01"
+compatibility_flags = []
+
+workers_dev = false
+route = "https://manage.krantz.to/*"
+
+[site]
+bucket = "./public"
+
+[build]
+command = "yarn build"
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "25f3a88378f94e21820d81305eaf6c0d"
+
+[miniflare]
+kv_persist = true
+cache_persist = true

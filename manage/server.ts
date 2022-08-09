@@ -1,17 +1,15 @@
-import { createPagesFunctionHandler } from '@remix-run/cloudflare-pages';
+import { createEventHandler } from '@remix-run/cloudflare-workers';
 import * as build from '@remix-run/dev/server-build';
 
-interface Environment {
-  links: KVNamespace;
+declare global {
+  const LINKS: KVNamespace;
 }
 
-const handleRequest = createPagesFunctionHandler<Environment>({
-  build,
-  // eslint-disable-next-line no-undef
-  mode: process.env.NODE_ENV,
-  getLoadContext: (context) => context.env,
-});
-
-export function onRequest(context: EventContext<Environment, any, any>) {
-  return handleRequest(context);
-}
+addEventListener(
+  'fetch',
+  createEventHandler({
+    build,
+    mode: process.env.NODE_ENV,
+    getLoadContext: () => ({ links: LINKS }),
+  }),
+);
